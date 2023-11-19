@@ -1,0 +1,47 @@
+:root {  
+  --paper-light:#FFFFFF;
+  --paper-dark:#424242;
+  
+  --primary-main:#03ACF2;
+  --primary-light:#B3E5FC;
+  --primary-dark:#0077AA;
+  
+  --secondary-main:#4CAF50;
+  --secondary-light:#C8E6C9;
+  --secondary-dark:#357A38;
+
+  --text-primary:rgba(0, 0, 0, 0.87);
+  --text-secondary:rgba(0, 0, 0, 0.54);
+  --text-disabled:rgba(0, 0, 0, 0.38);
+  --text-field:rgba(0, 0, 0, 0.42);
+  --text-secondary-dark-mode:rgba(255,255,255,0.7);
+
+  --default-light:#FAFAFA;
+  --default-dark:#303030;
+}
+*{
+  font-family: 'DynaPuff';
+  padding: 0%;
+  margin: 0;
+}
+.page{
+  background-color: var(--paper-light);
+  min-height: calc(100vh - 56px);
+  padding: 20px;
+}
+.secTitle{
+  text-align: center;
+  color: var(--primary-main);
+  font-size: 40px;
+  font-weight: 200;
+}
+nav{
+  width: 100%;
+  background-color: #03ACF2;
+  height: 56px;
+}
+footer{
+  width: 100%;
+  background-color: #03ACF2;
+  height: 150px;
+}
