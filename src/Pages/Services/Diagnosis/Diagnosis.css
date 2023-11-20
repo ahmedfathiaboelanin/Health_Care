@@ -25,23 +25,55 @@
   margin: 0;
 }
 .page{
+  overflow-x: hidden;
   background-color: var(--paper-light);
   min-height: calc(100vh - 56px);
-  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .secTitle{
   text-align: center;
-  color: var(--primary-main);
+  color: var(--primary-dark);
   font-size: 40px;
   font-weight: 200;
 }
-nav{
+.symptoms{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
   width: 100%;
-  background-color: #03ACF2;
-  height: 56px;
+  margin-top: 30px;
 }
-footer{
+.submit-btn{
+  background-color: var(--primary-main);
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  color: var(--paper-light);
+  padding: 5px;
+}
+.results{
+  position: relative;
   width: 100%;
-  background-color: #03ACF2;
-  height: 150px;
+  padding: 0px 0px 10px;
+  z-index: 1;
+  color: var(--text-primary);
+}
+.svg-circle{
+  position: absolute;
+  top: 0px;
+  z-index: 0;
+  right: -250px;
+}
+.docSechead{
+  padding: 30px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
