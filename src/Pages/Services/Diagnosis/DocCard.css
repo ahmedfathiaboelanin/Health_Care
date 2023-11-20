@@ -1,0 +1,70 @@
+:root {  
+  --paper-light:#FFFFFF;
+  --paper-dark:#424242;
+  
+  --primary-main:#03ACF2;
+  --primary-light:#B3E5FC;
+  --primary-dark:#0077AA;
+  
+  --secondary-main:#4CAF50;
+  --secondary-light:#C8E6C9;
+  --secondary-dark:#357A38;
+
+  --text-primary:rgba(0, 0, 0, 0.87);
+  --text-secondary:rgba(0, 0, 0, 0.54);
+  --text-disabled:rgba(0, 0, 0, 0.38);
+  --text-field:rgba(0, 0, 0, 0.42);
+  --text-secondary-dark-mode:rgba(255,255,255,0.7);
+
+  --default-light:#FAFAFA;
+  --default-dark:#303030;
+}
+.doc-card{
+    background-color: var(--paper-light);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #aaa8a8;
+    display: flex;
+    flex-direction: column;
+}
+.doc-card .card-top{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 70px;
+    position: relative;
+    margin: 0;
+}
+.doc-card .card-top img{
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    width: 70px;
+    height: 70px;
+    border-radius:0 50% 50% 50%;
+}
+.doc-card .card-top .top-text{
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.doc-spec{
+    color: var(--text-secondary);
+}
+.card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+}
+.price{
+    padding: 5px 10px;
+    background-color: var(--secondary-main);
+    border-radius: 5px;
+    color: var(--paper-light);
+    text-decoration: none;
+}
+.doc-icon{
+    font-size: 25px;
+}
