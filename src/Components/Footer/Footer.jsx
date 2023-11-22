@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                <ul className={styles.ul}>
                   <h2 className={styles.heading}> services</h2>
-                  <li className={styles.li}> <a className={styles.link} href="">AI Doctor</a></li>
+                  <li className={styles.li}> <a className={styles.link} href="services/diagnosis">AI Doctor</a></li>
                </ul>
             </div>
             

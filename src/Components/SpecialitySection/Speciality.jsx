@@ -59,7 +59,7 @@ const Speciality = () => {
       ]
    } 
    let routingPages = [
-      "link",
+      "services/diagnosis",
       "link",
       "link",
       "link",
