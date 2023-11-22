@@ -9,17 +9,26 @@ import "react-toastify/dist/ReactToastify.css";
 import DocCard from "./DocCard";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
+import axios from "axios";
 
 function Diagnosis() {
   const [symptoms, setSymptoms] = useState([]);
-  const [isResponse,setIsResponse] =useState(false)
+  const [isResponse, setIsResponse] = useState(false)
+  const [disease,setDisease] = useState("")
   const error = () => toast.error("No symptoms selected !");
   const success = () => toast.success("Success");
-  const handelSubmit = () => {
+  const handelSubmit = async() => {
     if (symptoms.length === 0) {
       error();
     } else {
+      let response = await axios.post("http://127.0.0.1:5000/predict", {
+        symptoms: symptoms,
+      });
+      console.log('====================================');
+      console.log(response.data);
+      console.log('====================================');
       success();
+      setDisease(response.data.rf_prediction);
       setIsResponse(true)
       console.log(symptoms);
     }
@@ -40,7 +49,17 @@ function Diagnosis() {
             onSelect={(value) => {
               setSymptoms(value);
             }}
-            options={Symptoms}
+            options={[
+              "fatigue",
+              "weight_loss",
+              "lethargy",
+              "irregular_sugar_level",
+              "blurred_and_distorted_vision",
+              "obesity",
+              "excessive_hunger",
+              "increased_appetite",
+              "polyuria",
+            ]}
             placeholder="Enter The Symptoms"
             style={{
               chips: {
@@ -66,7 +85,7 @@ function Diagnosis() {
           {isResponse && (
             <div className="results">
               <p>
-                rem quas ad adipisci repellendus ab doloribus nulla ipsam soluta
+                You might have : <span className="text-warning">{ disease}</span>
               </p>
             </div>
           )}
@@ -75,17 +94,31 @@ function Diagnosis() {
           <>
             <section className="doctors">
               <div className="container py-4">
-                {/* <div className="docSechead">
-                  <h3 className="">Recommended Doctors</h3>
-                  <Link to="/">
-                    {" "}
-                    <BsArrowRight /> See All Doctors
-                  </Link>
-                </div> */}
                 <div className="row m-0 justify-content-center gap-4 mt-4">
-                  <DocCard name="lorem ipsum .." spec="lorem lorem" exp={ 4 } rate={3.5} price={350} path="/" />
-                  <DocCard name="lorem ipsum .." spec="lorem lorem" exp={ 4 } rate={3.5} price={350} path="/" />
-                  <DocCard name="lorem ipsum .." spec="lorem lorem" exp={ 4 } rate={3.5} price={350} path="/" />
+                  <DocCard
+                    name="lorem ipsum .."
+                    spec="lorem lorem"
+                    exp={4}
+                    rate={3.5}
+                    price={350}
+                    path="/"
+                  />
+                  <DocCard
+                    name="lorem ipsum .."
+                    spec="lorem lorem"
+                    exp={4}
+                    rate={3.5}
+                    price={350}
+                    path="/"
+                  />
+                  <DocCard
+                    name="lorem ipsum .."
+                    spec="lorem lorem"
+                    exp={4}
+                    rate={3.5}
+                    price={350}
+                    path="/"
+                  />
                 </div>
               </div>
             </section>
