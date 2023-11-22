@@ -4,12 +4,21 @@ import { useState } from 'react'
 import Home from './Pages/Home/Home'
 import Select from './Components/SelectDropDownMenu/Select'
 
+import { BrowserRouter,Route,Routes } from 'react-router-dom'
+import Diagnosis from './Pages/Services/Diagnosis/Diagnosis'
 function App() {
   
   return (
-    <>
-      <Home/>
-    
+    <>    
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/services'>
+            <Route index element={<h1>All Services</h1>}/>
+            <Route path='diagnosis' element={<Diagnosis/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
