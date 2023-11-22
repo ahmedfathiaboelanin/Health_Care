@@ -1,0 +1,98 @@
+.dropdown {
+   color: var(--text-secondary);
+   /* box-shadow: -10px -10px 10px 6px; */
+   border-radius: 10px;
+   transition: .3s;
+   position: relative;
+
+   display: flex;
+   max-width: 280px;
+
+}
+
+.dropdown > * {
+   flex: 1;
+   width: 100%;
+}
+
+.textField {
+
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   
+   border: 1px solid var(--primary-main);
+   padding: 8px;
+   border-radius: 10px;
+   position: relative;
+}
+
+.textField input {
+   display: inline-block;
+   max-width: 130px;
+
+   outline: none;
+   border: none;
+   color: var(--primary-main);
+   cursor: default;
+   font-weight: 500;
+}
+
+.textField svg {
+   flex-shrink: 0;
+}
+
+.textField span{
+   position: absolute;
+   right: 20px;
+   top: 50%;
+   transform: translateY(-50%) rotate(45deg);
+   
+   display: block;
+   width: 10px;
+   height: 10px;
+   border-right: solid var(--text-secondary);
+   border-bottom: solid var(--text-secondary);
+   cursor: pointer;
+
+   transition: .3s;
+}
+
+.textField span.up{
+   transform: translateY(-50%) rotate(calc(45deg + 180deg));
+}
+
+.options {
+   transition: .3s;
+   overflow: hidden;
+   
+   position: absolute;
+   top: 60px;
+   left: 0;
+   width: 100%;
+}
+
+.options > div {
+   width: 100%;
+   padding: 8px;
+   cursor: pointer;
+
+   display: flex;
+   align-items: center;
+   gap: 10px;
+
+   border-radius: 10px;
+}
+
+.options > div:hover {
+   background-color: var(--primary-light)  ;
+}
+
+.options > div span {
+   color: var(--primary-main);
+   font-weight: 500;
+}
+
+.hide {
+   height: 0px;
+}

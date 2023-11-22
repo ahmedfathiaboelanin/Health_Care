@@ -1,5 +1,6 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,7 +12,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+ */
   --paper-light:#FFFFFF;
   --paper-dark:#424242;
   
@@ -23,11 +24,15 @@
   --secondary-light:#C8E6C9;
   --secondary-dark:#357A38;
 
+  --tertiary-main:#F42E88;
+
   --text-primary:rgba(0, 0, 0, 0.87);
   --text-secondary:rgba(0, 0, 0, 0.54);
+  
   --text-disabled:rgba(0, 0, 0, 0.38);
   --text-field:rgba(0, 0, 0, 0.42);
   --text-secondary-dark-mode:rgba(255,255,255,0.7);
+
 
   --default-light:#FAFAFA;
   --default-dark:#303030;
@@ -38,7 +43,11 @@
   /* react icons */
 }
 
-a {
+* {
+  box-sizing: border-box;
+}
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -72,6 +81,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
@@ -91,4 +101,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
