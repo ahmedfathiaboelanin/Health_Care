@@ -5,6 +5,7 @@
   --paper-dark:#424242;
   
   --primary-main:#03ACF2;
+  --primary-lighter:#f0faff;
   --primary-light:#B3E5FC;
   --primary-dark:#0077AA;
   
@@ -32,6 +33,8 @@
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
