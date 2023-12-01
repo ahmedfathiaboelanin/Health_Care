@@ -32,6 +32,10 @@ function Diagnosis() {
         });
         // success alert
         success();
+
+        console.log('====================================');
+        console.log(response.data);
+        console.log('====================================');
         // set the disease 
         setDisease(response.data);
         // show the disease and the doctors
@@ -69,6 +73,11 @@ function Diagnosis() {
               "excessive_hunger",
               "increased_appetite",
               "polyuria",
+              "stomach_pain",
+              "acidity",
+              "vomiting",
+              "cough",
+              "chest_pain",
             ]}
             placeholder="Enter The Symptoms"
             style={{
@@ -93,13 +102,29 @@ function Diagnosis() {
             theme="light"
           />
           {isResponse && (
-            <div className={`${styles.results}`}>
-              <p>
-                You might have :{"  "}
-                <span className={`text-warning`}>{disease.Disease}</span>
-              </p>
-              <p className={`text-secondary`}>{disease.Description}</p>
-            </div>
+            <>
+              <div className={`${styles.results} d-flex gap-2 gap-md-5 flex-wrap`}>
+                <h5>
+                  You might have :{"  "}
+                  <span className={`text-danger`}>{disease.Disease}</span>
+                </h5>
+                <h5>
+                  Spcialist :{"  "}
+                  <span className={`text-danger`}>{disease.Spcialist}</span>
+                </h5>
+              </div>
+              <h5 className={`text-primary ${styles.precaution}`}>
+                Precautions
+              </h5>
+              <div className={`d-flex gap-3 flex-wrap`}>
+                {disease.Precautions.map((precaution, i) => (
+                  <span className={`text-warning`} key={i}>
+                    {`${i + 1} - ${precaution}`}
+                  </span>
+                ))}
+              </div>
+              <p className={`text-secondary mt-4`}>{disease.Description}</p>
+            </>
           )}
         </section>
         {isResponse && (
