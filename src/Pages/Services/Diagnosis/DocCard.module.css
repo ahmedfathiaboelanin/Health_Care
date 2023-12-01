@@ -19,14 +19,14 @@
   --default-light:#FAFAFA;
   --default-dark:#303030;
 }
-.doc-card{
+.docCard{
     background-color: var(--paper-light);
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px #aaa8a8;
     display: flex;
     flex-direction: column;
 }
-.doc-card .card-top{
+.docCard .cardTop{
     padding: 10px;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@
     position: relative;
     margin: 0;
 }
-.doc-card .card-top img{
+.docCard .cardTop img{
     position: absolute;
     top: -10px;
     left: -20px;
@@ -43,16 +43,16 @@
     height: 70px;
     border-radius:0 50% 50% 50%;
 }
-.doc-card .card-top .top-text{
+.docCard .cardTop .topText{
     font-weight: 100;
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
-.doc-spec{
+.docSpec{
     color: var(--text-secondary);
 }
-.card-bottom{
+.cardBottom{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -65,6 +65,6 @@
     color: var(--paper-light);
     text-decoration: none;
 }
-.doc-icon{
+.docIcon{
     font-size: 25px;
 }

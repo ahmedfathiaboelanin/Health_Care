@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Multiselect from "multiselect-react-dropdown";
-import "./Diagnosis.css";
+import styles from "./Diagnosis.module.css";
 import { useState } from "react";
 import Symptoms from "./Symptoms";
 
@@ -14,21 +14,21 @@ import axios from "axios";
 function Diagnosis() {
   const [symptoms, setSymptoms] = useState([]);
   const [isResponse, setIsResponse] = useState(false)
-  const [disease,setDisease] = useState("")
+  const [disease,setDisease] = useState({})
   const error = () => toast.error("No symptoms selected !");
   const success = () => toast.success("Success");
   const handelSubmit = async() => {
     if (symptoms.length === 0) {
       error();
     } else {
-      let response = await axios.post("http://127.0.0.1:5000/predict", {
+      let response = await axios.post("http://127.0.0.1:8000/api/test", {
         symptoms: symptoms,
       });
       console.log('====================================');
       console.log(response.data);
       console.log('====================================');
       success();
-      setDisease(response.data.rf_prediction);
+      setDisease(response.data);
       setIsResponse(true)
       console.log(symptoms);
     }
@@ -36,9 +36,9 @@ function Diagnosis() {
 
   return (
     <>
-      <main className="page">
-        <h1 className="secTitle">what do you feel ?</h1>
-        <section className="symptoms container">
+      <main className={`${styles.page}`}>
+        <h1 className={`${styles.secTitle}`}>what do you feel ?</h1>
+        <section className={`${styles.symptoms}  container`}>
           <Multiselect
             isObject={false}
             onKeyPressFn={function noRefCheck() {}}
@@ -67,7 +67,7 @@ function Diagnosis() {
               },
             }}
           />
-          <button className="submit-btn" onClick={handelSubmit}>
+          <button className={`${styles.submitBtn}`} onClick={handelSubmit}>
             Submit
           </button>
           <ToastContainer
@@ -83,18 +83,20 @@ function Diagnosis() {
             theme="light"
           />
           {isResponse && (
-            <div className="results">
+            <div className={`${styles.results}`}>
               <p>
-                You might have : <span className="text-warning">{ disease}</span>
+                You might have :{"  "}
+                <span className={`text-warning`}>{disease.Disease}</span>
               </p>
+              <p className={`text-secondary`}>{disease.Description}</p>
             </div>
           )}
         </section>
         {isResponse && (
           <>
-            <section className="doctors">
-              <div className="container py-4">
-                <div className="row m-0 justify-content-center gap-4 mt-4">
+            <section className={`${styles.doctors}`}>
+              <div className={`container py-4`}>
+                <div className={`row m-0 justify-content-center gap-4 mt-4`}>
                   <DocCard
                     name="lorem ipsum .."
                     spec="lorem lorem"
@@ -130,7 +132,7 @@ function Diagnosis() {
           viewBox="0 0 1000 1000"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="svg-circle d-none d-md-block"
+          className={`${styles.svgCircle} d-none d-md-block`}
         >
           <circle opacity="0.5" cx="500" cy="500" r="500" fill="#B3E5FC" />
         </svg>
