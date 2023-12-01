@@ -7,30 +7,40 @@ import Symptoms from "./Symptoms";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocCard from "./DocCard";
-import { Link } from "react-router-dom";
-import { BsArrowRight } from "react-icons/bs";
 import axios from "axios";
 
 function Diagnosis() {
+
   const [symptoms, setSymptoms] = useState([]);
   const [isResponse, setIsResponse] = useState(false)
-  const [disease,setDisease] = useState({})
-  const error = () => toast.error("No symptoms selected !");
-  const success = () => toast.success("Success");
-  const handelSubmit = async() => {
+  const [disease, setDisease] = useState({})
+
+  // alerts
+    const error = () => toast.error("No symptoms selected !"); // if the select is empty
+    const apiError = (e) => toast.error(e); // if there is error from tha api
+    const success = () => toast.success("Success"); // if the api call has done successfully
+  const handelSubmit = async () => {
+    // check if the select is empty
     if (symptoms.length === 0) {
       error();
     } else {
-      let response = await axios.post("http://127.0.0.1:8000/api/test", {
-        symptoms: symptoms,
-      });
-      console.log('====================================');
-      console.log(response.data);
-      console.log('====================================');
-      success();
-      setDisease(response.data);
-      setIsResponse(true)
-      console.log(symptoms);
+      // handel api call
+      try {
+        // call back-end api
+        let response = await axios.post("http://127.0.0.1:8000/api/diagnose", {
+          symptoms: symptoms,
+        });
+        // success alert
+        success();
+        // set the disease 
+        setDisease(response.data);
+        // show the disease and the doctors
+        setIsResponse(true)
+
+      } catch (err) {
+        // api error
+        apiError(err.message)
+      }
     }
   };
 
