@@ -20,11 +20,11 @@
   --default-dark:#303030;
 }
 *{
-  font-family: 'DynaPuff';
   padding: 0%;
   margin: 0;
 }
 .page{
+  font-family: 'DynaPuff';
   overflow-x: hidden;
   background-color: var(--paper-light);
   min-height: calc(100vh - 56px);
