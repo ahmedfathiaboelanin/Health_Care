@@ -1,66 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Diseases;
 use App\Http\Requests\StoreDiseasesRequest;
 use App\Http\Requests\UpdateDiseasesRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\RequestException;
+
 
 class DiseasesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function diagnosis(Request $request)
     {
-        //
-    }
+        // access request data
+        $req = $request->symptoms;
+        
+        // call the AI Api
+        $response = Http::post('http://127.0.0.1:5000/predict', [
+            "symptoms"=>$req
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // get the disease from the response
+        $disease = json_decode($response)->lr_prediction;
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreDiseasesRequest $request)
-    {
-        //
-    }
+        // get data from the database
+        $data = Diseases::where("Disease",$disease)->first();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Diseases $diseases)
-    {
-        //
-    }
+        // handel the response
+        $responseData = ["Disease" => $data->Disease, "Description" => $data->Description, "Spcialist"=>$data->Specialist, "Precautions"=>[$data->precaution_1,$data->precaution_2,$data->precaution_3,$data->precaution_4]];
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Diseases $diseases)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateDiseasesRequest $request, Diseases $diseases)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Diseases $diseases)
-    {
-        //
+        // send the response to the front-end as json
+        return response()->json(
+            $responseData
+        ) ;
     }
 }

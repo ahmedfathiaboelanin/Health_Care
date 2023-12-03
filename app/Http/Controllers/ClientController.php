@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\spcialist;
-use App\Http\Requests\StorespcialistRequest;
-use App\Http\Requests\UpdatespcialistRequest;
+use App\Models\Client;
+use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 
-class SpcialistController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class SpcialistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorespcialistRequest $request)
+    public function store(StoreClientRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SpcialistController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(spcialist $spcialist)
+    public function show(Client $client)
     {
         //
     }
@@ -43,7 +43,7 @@ class SpcialistController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(spcialist $spcialist)
+    public function edit(Client $client)
     {
         //
     }
@@ -51,7 +51,7 @@ class SpcialistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatespcialistRequest $request, spcialist $spcialist)
+    public function update(UpdateClientRequest $request, Client $client)
     {
         //
     }
@@ -59,7 +59,7 @@ class SpcialistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(spcialist $spcialist)
+    public function destroy(Client $client)
     {
         //
     }
