@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from "./Speciality.module.css"
+import { Link } from 'react-router-dom';
 
 // Icons
 
@@ -74,8 +75,8 @@ const Speciality = () => {
    }
    
    return (
-      <div className='container-fluid container-md'>
-         <section className={`${styles.speciality} row`}>
+      <div className='container-fluid container-sm'>
+         <section className={`${styles.speciality} row justify-content-center`}>
             
             <div className={`col-12 col-lg-6 row justify-content-center align-items-center`}>
                <div className={`${styles.solarSystem}`}>
@@ -132,7 +133,7 @@ const Speciality = () => {
                         ulContent[lang].map((el,idx) => {
                            return (
                               <li key={idx}>
-                                 <a href={routingPages[idx]}> {el} </a>
+                                 <Link to ={routingPages[idx]}> {el} </Link>
                               </li>
                            )
                         })
