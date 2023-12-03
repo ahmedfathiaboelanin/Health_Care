@@ -6,11 +6,13 @@ import Select from './Components/SelectDropDownMenu/Select'
 
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Diagnosis from './Pages/Services/Diagnosis/Diagnosis'
+import NavBar from './Components/NavBar/NavBar'
 function App() {
   
   return (
-    <>    
+    <>
       <BrowserRouter>
+        <NavBar/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/services'>
