@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Precaution;
-use App\Http\Requests\StorePrecautionRequest;
-use App\Http\Requests\UpdatePrecautionRequest;
+use App\Models\Doctors;
+use App\Http\Requests\StoreDoctorsRequest;
+use App\Http\Requests\UpdateDoctorsRequest;
 
-class PrecautionController extends Controller
+class DoctorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class PrecautionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePrecautionRequest $request)
+    public function store(StoreDoctorsRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class PrecautionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Precaution $precaution)
+    public function show(Doctors $doctors)
     {
         //
     }
@@ -43,7 +43,7 @@ class PrecautionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Precaution $precaution)
+    public function edit(Doctors $doctors)
     {
         //
     }
@@ -51,7 +51,7 @@ class PrecautionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePrecautionRequest $request, Precaution $precaution)
+    public function update(UpdateDoctorsRequest $request, Doctors $doctors)
     {
         //
     }
@@ -59,7 +59,7 @@ class PrecautionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Precaution $precaution)
+    public function destroy(Doctors $doctors)
     {
         //
     }
