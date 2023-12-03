@@ -1,0 +1,204 @@
+.hero * {
+   margin: 0;
+   padding: 0;
+}
+
+.hero {
+   min-height: 80vh;
+   font-family: 'Roboto', sans-serif;
+   padding: 1rem 0;
+   margin-bottom: 1.5rem;
+}
+@media screen and (min-width:0px) {
+   .hero {
+      position: relative;
+   }
+}
+@media screen and (min-width:576px) {
+   .hero {
+   }
+}
+@media screen and (min-width:992px) {
+   .hero {
+      padding: 2rem;
+      position: static;
+   }
+}
+
+.hero .circle {
+   position: absolute;
+   border-radius: 50%;
+   bottom: 0;
+   max-width: initial; /* reset max-width because it is in a row div that takes max-width:100% from bootstrap */
+}
+@media screen and (min-width:0px) {
+   .hero .circle {
+      width: 1200px;
+      height: 1200px;
+   }
+}
+@media screen and (min-width:576px) {
+   .hero .circle {
+      width: 1400px;
+      height: 1200px;
+   }
+}
+@media screen and (min-width:992px) {
+   .hero .circle {
+      width: 950px;
+      height: 950px;
+   }
+}
+
+.hero .circle-top {   
+   background-color: var(--primary-light);
+   z-index: -5;
+}
+@media screen and (min-width:0px) {
+   .hero .circle-top {
+      display: none;
+   }
+}
+@media screen and (min-width:992px) {
+   .hero .circle-top {
+      display: block;
+      bottom: initial;
+      top: -100px;
+      left: 35%;
+      transform: translateY(-50%);
+   }
+}
+
+@media screen and (min-width:1200px) {
+   .hero .circle-top {
+      left: 35%;
+   }
+}
+@media screen and (min-width:1300px) {
+   .hero .circle-top {
+      left: 40%;
+   }
+}
+
+.hero .circle-right {
+   background-image: linear-gradient(#C8E6C9, var(--primary-main));
+   z-index: -4;
+   opacity: .7;
+}
+@media screen and (min-width:0px) {
+   .hero .circle-right {
+      left: 50%;
+      transform: translateX(-50%);
+   }
+}
+@media screen and (min-width:576px) {
+   .hero .circle-right {
+      left: 50%;
+      transform: translateX(-50%);
+   }
+}
+@media screen and (min-width:992px) {
+   .hero .circle-right {
+      bottom: initial;
+      left: 55%;
+      top: -250px;
+      transform: translateX(0);   
+   }
+}
+@media screen and (min-width:1200px) {
+   .hero .circle-right {
+      top: -200px;
+   }
+}
+
+.intro-col {
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   justify-content: center;
+}
+@media screen and (min-width:992px) {
+   .intro-col {
+      gap: 4rem;
+   }
+}
+
+.intro-col h1 {
+   text-wrap: balance;
+   font-weight: 700;
+}
+@media screen and (min-width:0px) {
+   .intro-col h1 {
+      font-size: 2.5rem;
+   }
+}
+@media screen and (min-width:576px) {
+   .intro-col h1 {
+      font-size: 2.5rem;
+   }
+}
+@media screen and (min-width:768px) {
+   .intro-col h1 {
+      font-size: 3.5rem;
+   }
+}
+
+.intro-col p {
+   color: var(--text-primary);
+   font-size: 2rem;
+}
+@media screen and (min-width:0px) {
+   .intro-col p {
+      font-size: 1rem;
+   }
+}
+@media screen and (min-width:576px) {
+   .intro-col p {
+      font-size: 1.5rem;
+   }
+}
+
+.video-col {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   padding: 1rem;
+
+}
+
+.video-div {
+   flex: 1;
+   aspect-ratio: 1/1;
+   min-width: 250px;
+   max-width: 550px;
+   min-height: 250px;
+   max-height: 550px;
+   border-radius: 50%;
+   border-top-left-radius: 0;
+   background-color: var(--primary-main);
+   background-image: url("./pexels-anna-shvets-4586993.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+}   
+@media screen and (min-width:0px) {   
+   .video-div {
+      min-width: 250px;
+      max-width: 350px;
+      min-height: 250px;
+      max-height: 350px;
+   }   
+}
+@media screen and (min-width:992px) {   
+   .video-div {
+      min-width: 250px;
+      max-width: 550px;
+      min-height: 250px;
+      max-height: 550px;
+   }   
+}
+
+/* .video-div video {
+}    */
+
