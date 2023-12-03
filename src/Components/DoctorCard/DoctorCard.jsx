@@ -18,13 +18,13 @@ function DocCard({name, imgUrl=docImg, spec, exp, rate, price, path}) {
       </div>
       <hr className="my-2" />
       <div className={styles["card-bottom"]}>
-        <div className="rate d-flex align-items-center justify-content-center   gap-1">
+        <div className="rate d-flex align-items-center justify-content-center gap-1">
           <FaStar className="doc-icon text-warning" /> {rate}
         </div>
         <div className="exp d-flex align-items-center  justify-content-center gap-1">
           <MdWork className={`${styles["doc-icon"]} text-secondary`} /> {exp} Years
         </div>
-        <Link to={path} className="price">
+        <Link to={path} className={styles.price}>
           {price} $
         </Link>
       </div>
