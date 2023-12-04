@@ -10,6 +10,9 @@ import DocCard from "./DocCard";
 import axios from "axios";
 
 function Diagnosis() {
+  
+  // remove repeated data from symptoms
+  const selectOptions = [...new Set(Symptoms)];
 
   const [symptoms, setSymptoms] = useState([]);
   const [isResponse, setIsResponse] = useState(false)
@@ -24,11 +27,11 @@ function Diagnosis() {
     if (symptoms.length === 0) {
       error();
     } else {
-      // handel api call
+
       try {
         // call back-end api
         let response = await axios.post("http://127.0.0.1:8000/api/diagnose", {
-          symptoms: symptoms,
+          symptoms: symptoms.join(", "),
         });
         // success alert
         success();
@@ -36,8 +39,10 @@ function Diagnosis() {
         console.log('====================================');
         console.log(response.data);
         console.log('====================================');
+
         // set the disease 
         setDisease(response.data);
+
         // show the disease and the doctors
         setIsResponse(true)
 
@@ -63,22 +68,7 @@ function Diagnosis() {
             onSelect={(value) => {
               setSymptoms(value);
             }}
-            options={[
-              "fatigue",
-              "weight_loss",
-              "lethargy",
-              "irregular_sugar_level",
-              "blurred_and_distorted_vision",
-              "obesity",
-              "excessive_hunger",
-              "increased_appetite",
-              "polyuria",
-              "stomach_pain",
-              "acidity",
-              "vomiting",
-              "cough",
-              "chest_pain",
-            ]}
+            options={selectOptions}
             placeholder="Enter The Symptoms"
             style={{
               chips: {
@@ -103,7 +93,9 @@ function Diagnosis() {
           />
           {isResponse && (
             <>
-              <div className={`${styles.results} d-flex gap-2 gap-md-5 flex-wrap`}>
+              <div
+                className={`${styles.results} d-flex gap-2 gap-md-5 flex-wrap`}
+              >
                 <h5>
                   You might have :{"  "}
                   <span className={`text-danger`}>{disease.Disease}</span>
