@@ -7,6 +7,7 @@ import Select from './Components/SelectDropDownMenu/Select'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Diagnosis from './Pages/Services/Diagnosis/Diagnosis'
 import NavBar from './Components/NavBar/NavBar'
+import Footer from './Components/Footer/Footer'
 function App() {
   
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='diagnosis' element={<Diagnosis/>}/>
           </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )
