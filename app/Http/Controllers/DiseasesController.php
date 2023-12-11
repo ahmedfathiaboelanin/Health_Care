@@ -38,4 +38,7 @@ class DiseasesController extends Controller
             $responseData
         ) ;
     }
+    public function all(){
+        return Diseases::all();
+    }
 }
