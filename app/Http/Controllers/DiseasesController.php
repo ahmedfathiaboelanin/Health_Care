@@ -25,7 +25,7 @@ class DiseasesController extends Controller
         ]);
 
         // get the disease from the response
-        $disease = json_decode($response)->lr_prediction;
+        $disease = json_decode($response)->voting_prediction;
 
         // get data from the database
         $data = Diseases::where("Disease",$disease)->first();
