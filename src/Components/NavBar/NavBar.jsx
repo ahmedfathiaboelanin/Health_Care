@@ -29,25 +29,28 @@ const NavBar = () => {
    let linksContent = {
       En: [
          "home",
-         "contact us",
          "about us",
-         "speciality",
-         "doctors"
+         "Services",
+         "doctors",
+         "Blogs",
+         "contact us"
       ],
       Ar: [
          "الرئيسية",
-         "تواصل معنا",
          "من نحن",
-         "اختصاصنا",
-         "الأطباء"
+         "خدماتنا",
+         "الأطباء",
+         "المقالات",
+         "تواصل معنا"
       ]
    }
    
    let linksPaths = [
       "/",
       "/",
+      "/services",
       "/",
-      "/",
+      "/blogs",
       "/"
    ]
 
