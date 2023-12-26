@@ -19,7 +19,11 @@
   --default-light:#FAFAFA;
   --default-dark:#303030;
 }
+.rtl{
+  direction: rtl;
+}
 *{
+  direction: inherit;
   padding: 0%;
   margin: 0;
 }
