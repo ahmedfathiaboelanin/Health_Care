@@ -17,26 +17,48 @@ class DiseasesController extends Controller
     public function diagnosis(Request $request)
     {
         // access request data
-        $req = $request->symptoms;
+        $reqSymptoms = $request->symptoms;
+        $lang = $request->lang;
         
         // call the AI Api
         $response = Http::post('http://127.0.0.1:5000/predict', [
-            "symptoms"=>$req
+            "symptoms"=>$reqSymptoms
         ]);
 
         // get the disease from the response
         $disease = json_decode($response)->voting_prediction;
 
         // get data from the database
-        $data = Diseases::where("Disease",$disease)->first();
+        $diseaseData = Diseases::where("Disease",$disease)->first();
 
-        // handel the response
-        $responseData = ["Disease" => $data->Disease, "Description" => $data->Description, "Spcialist"=>$data->Specialist, "Precautions"=>[$data->precaution_1,$data->precaution_2,$data->precaution_3,$data->precaution_4]];
-
-        // send the response to the front-end as json
-        return response()->json(
-            $responseData
-        ) ;
+        if($lang === "en"){
+            // handel the response
+            $responseData = ["Disease" => $diseaseData->Disease,
+                "Description" => $diseaseData->Description,
+                "Spcialist"=>$diseaseData->Specialist,
+                "Precautions"=>[$diseaseData->precaution_1,$diseaseData->precaution_2,$diseaseData->precaution_3,$diseaseData->precaution_4]];
+    
+            // send the response to the front-end as json
+            return response()->json(
+                $responseData
+            ) ;
+        }else{
+            // handel the response
+            $responseData = ["ar_Disease" => $diseaseData->ar_Disease,
+                "ar_Description" => $diseaseData->ar_Description,
+                "ar_Spcialist"=>$diseaseData->ar_Specialist,
+                "ar_Precautions"=>[$diseaseData->ar_precaution_1,$diseaseData->ar_precaution_2,$diseaseData->ar_precaution_3,$diseaseData->ar_precaution_4],
+                "Disease" => $diseaseData->Disease,
+                "Description" => $diseaseData->Description,
+                "Spcialist"=>$diseaseData->Specialist,
+                "Precautions"=>[$diseaseData->precaution_1,$diseaseData->precaution_2,$diseaseData->precaution_3,$diseaseData->precaution_4]
+            ];
+            // send the response to the front-end as json
+            return response()->json(
+                $responseData
+            ) ;
+        }
+        
     }
     public function all(){
         return Diseases::all();
