@@ -2,12 +2,14 @@
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./Diagnosis.module.css";
 import { useEffect, useRef, useState } from "react";
-import {Symptoms, arSymptoms} from "./Symptoms";
+import { Symptoms, arSymptoms } from "./Symptoms";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocCard from "./DocCard";
 import axios from "axios";
+import ReponseSkeleton from "./ReponseSkeleton";
+
 
 function Diagnosis() {
 
@@ -26,6 +28,7 @@ function Diagnosis() {
   //ref the multiSelect
   const multiSelect = useRef()
   
+  const [isLoading, setIsLoading] = useState(false)
   const [symptoms, setSymptoms] = useState([]);
   const [isResponse, setIsResponse] = useState(false)
   const [disease, setDisease] = useState({})
@@ -41,6 +44,8 @@ function Diagnosis() {
       error();
     } else {
       if (lang === "ar") {
+        // handel loading
+        setIsLoading(true)
         // Get the english version of the Symptoms
         console.log(symptoms);
         let enSymptoms = []
@@ -76,6 +81,10 @@ function Diagnosis() {
         }
       } else {
         try {
+          
+          //handel loading
+          setIsLoading(true);
+
           // call back-end api
           let response = await axios.post("http://127.0.0.1:8000/api/diagnose", {
             symptoms: symptoms.join(", "),
@@ -135,6 +144,7 @@ function Diagnosis() {
               multiSelect.current.resetSelectedValues() // reset the selected symptoms
               setSymptoms([]) // reset the selected Symptoms
               setIsResponse(false) // set the response to false to remove response sec
+              setIsLoading(false) // reset loading
             }}>
               <option defaultValue value="en">English</option>
               <option value="ar">Arabic</option>
@@ -156,6 +166,10 @@ function Diagnosis() {
             theme="light"
           />
 
+          {isLoading && !isResponse &&(
+            <ReponseSkeleton/>
+          )}
+
           {/* Arabic Response */}
           {isResponse && lang === "ar" && (
             <div className={`${lang === "ar" && styles.rtl}`} >
@@ -163,7 +177,7 @@ function Diagnosis() {
                 className={`${styles.results} d-flex gap-2 gap-md-5 flex-wrap`}
               >
                 <h5>
-                  قد تكون تعاني من :{"  "}
+                  التشخيص :{"  "}
                   <span className={`text-danger`}>{disease.ar_Disease}</span>
                 </h5>
                 <h5>
@@ -201,7 +215,7 @@ function Diagnosis() {
                 className={`${styles.results} d-flex gap-2 gap-md-5 flex-wrap`}
               >
                 <h5>
-                  You might have :{"  "}
+                  Diagnosis :{"  "}
                   <span className={`text-danger`}>{disease.Disease}</span>
                 </h5>
                 <h5>
