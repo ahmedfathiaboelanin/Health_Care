@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
 use App\Models\Diseases;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\DiseasesController;
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +26,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/diseases",[DiseasesController::class,"all"]);
 
 Route::post("/diagnose",[DiseasesController::class,'diagnosis'] );
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('/login', [UserController::class, 'login']);
+    Route::post('/register', [UserController::class, 'register']);
+    Route::get('/profile', [UserController::class, 'userProfile']);
+    Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/refresh', [UserController::class, 'refresh']);
+});
+
+
+
+
 
