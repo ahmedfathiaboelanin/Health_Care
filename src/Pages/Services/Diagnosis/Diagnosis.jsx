@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./Diagnosis.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Symptoms, arSymptoms } from "./Symptoms";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -10,9 +10,13 @@ import DocCard from "./DocCard";
 import axios from "axios";
 import ReponseSkeleton from "./ReponseSkeleton";
 
-
+// userContext
+import { loginContext } from "../../../App";
 function Diagnosis() {
-
+  const { login, setLoin } = useContext(loginContext)
+  console.log("----------user------------");
+  console.log(login);
+  console.log("----------user------------");
   console.log(Symptoms.length,arSymptoms.length);
   const [selectOptions,setSelectOptions] = useState([]);
   const [lang, setLang] = useState("en")
@@ -60,7 +64,6 @@ function Diagnosis() {
           // call back-end api
           let response = await axios.post("http://127.0.0.1:8000/api/diagnose", {
             symptoms: enSymptoms.join(", "),
-            lang
           });
           // success alert
           success();
@@ -81,14 +84,12 @@ function Diagnosis() {
         }
       } else {
         try {
-          
           //handel loading
           setIsLoading(true);
 
           // call back-end api
           let response = await axios.post("http://127.0.0.1:8000/api/diagnose", {
             symptoms: symptoms.join(", "),
-            lang
           });
           // success alert
           success();
@@ -116,8 +117,9 @@ function Diagnosis() {
       <main className={`${styles.page}`}>
         <h1 className={`${styles.secTitle}`}>what do you feel ?</h1>
 
-        {/* select to change thef lang */}
         <section className={`${styles.symptoms}  container`}>        
+
+          {/* select symptoms */}
           <Multiselect
             ref={multiSelect}
             isObject={false}
@@ -137,6 +139,8 @@ function Diagnosis() {
               },
             }}
           />
+
+          {/* select to change thef lang */}
           <div className="language d-flex gap-3">
             <label>Select Language : {" "}</label>
             <select onChange={e => {
@@ -153,6 +157,8 @@ function Diagnosis() {
           <button className={`${styles.submitBtn}`} onClick={handelSubmit}>
             Submit
           </button>
+
+          {/* Alert */}
           <ToastContainer
             position="top-center"
             autoClose={5000}
@@ -189,7 +195,7 @@ function Diagnosis() {
                 الاحتياطات
               </h5>
               <div className={`d-flex gap-3 flex-wrap`}>
-                {disease.ar_Precautions.map((precaution, i) => {
+                {disease.ar_Precautions.split(",").map((precaution, i) => {
                   if(precaution === null){
                     return (
                       <span key={i}>
@@ -227,7 +233,7 @@ function Diagnosis() {
                 Precautions
               </h5>
               <div className={`d-flex gap-3 flex-wrap`}>
-                {disease.Precautions.map((precaution, i) => {
+                {disease.Precautions.split(",").map((precaution, i) => {
                   if (precaution === null) {
                     return (
                       <span key={i}>
@@ -247,6 +253,8 @@ function Diagnosis() {
             </>
           )}
         </section>
+
+        {/* doctors section */}
         {isResponse && (
           <>
             <section dir="rtl" className={`${styles.doctors}`}>
@@ -281,6 +289,7 @@ function Diagnosis() {
             </section>
           </>
         )}
+
         <svg
           width="500"
           height="500"
