@@ -11,6 +11,7 @@ import Blogs from './Pages/Blogs/Blogs'
 import Login from './Pages/Login/Login'
 import { createContext } from 'react'
 import Register from './Pages/Register/Register'
+import HeartFailure from './Pages/Services/HeartFailure/HeartFailure'
 
 export const loginContext = createContext();
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/services'>
               <Route index element={<h1>All Services</h1>} />
               <Route path='diagnosis' element={<Diagnosis />} />
+              <Route path='heart-failure' element={<HeartFailure/>} />
             </Route>
             <Route path='/blogs'>
               <Route index element={<Blogs />} />

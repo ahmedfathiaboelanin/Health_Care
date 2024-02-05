@@ -1,0 +1,105 @@
+:root {  
+  --paper-light:#FFFFFF;
+  --paper-dark:#424242;
+  
+  --primary-main:#03ACF2;
+  --primary-light:#B3E5FC;
+  --primary-dark:#0077AA;
+  
+  --secondary-main:#4CAF50;
+  --secondary-light:#C8E6C9;
+  --secondary-dark:#357A38;
+
+  --text-primary:rgba(0, 0, 0, 0.87);
+  --text-secondary:rgba(0, 0, 0, 0.54);
+  --text-disabled:rgba(0, 0, 0, 0.38);
+  --text-field:rgba(0, 0, 0, 0.42);
+  --text-secondary-dark-mode:rgba(255,255,255,0.7);
+
+  --default-light:#FAFAFA;
+  --default-dark:#303030;
+}
+*{
+  direction: inherit;
+  padding: 0%;
+  margin: 0;
+}
+.page{
+  font-family: 'DynaPuff';
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: #f6f6f6;
+  min-height: calc(100vh - 56px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+.sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+.form{
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid var(--primary-main);
+    padding: 30px !important;
+    border-radius: 5px;
+    background-color: var(--default-light);
+}
+.registerTitle{
+    color: var(--primary-dark);
+    text-align: center;
+}
+.inputRow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+.form input, .select{
+    background-color: #f6f6f6;
+    flex-grow: 1;
+    flex-basis: 300px;
+    padding-left: 10px;
+    border-radius: 2px;
+    border: 1px solid var(--primary-main);
+    height: 45px;
+}
+.form button{
+    background-color: var(--primary-dark);
+    color: var(--default-light);
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+.svgCircle{
+  position: absolute;
+  top: -100px;
+  z-index: 0;
+  right: -250px;
+}
+.svgCircle1{
+  position: absolute;
+  bottom: -100px;
+  z-index: 0;
+  left: -250px;
+}
+.result{
+    position: relative;
+    z-index: 10;
+    font-size: 18px;
+    color: var(--primary-dark);
+    text-align: center;
+}
